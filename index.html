@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coding Agent Efficiency — What 87 PRs Taught Us</title>
+<title>Software Factory — What 87 PRs Taught Me</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -434,8 +434,8 @@
 
   <!-- SLIDE 0: Title -->
   <div class="slide slide-title active" data-slide="0">
-    <div class="eyebrow">Engineering Productivity</div>
-    <h1>What 87 PRs Taught Us About Coding Agents</h1>
+    <div class="eyebrow">Software Factory</div>
+    <h1>What 87 PRs Taught Me About Coding Agents</h1>
     <div class="subtitle">A 3-month analysis of how our team ships code with AI — what works, what thrashes, and what defaults to build.</div>
     <div class="meta">Dec 2025 — Mar 2026 &nbsp;/&nbsp; Amplitude &nbsp;/&nbsp; William Newton</div>
   </div>
@@ -745,6 +745,19 @@
 
 </div>
 
+<!-- Share button -->
+<button id="share-btn" onclick="shareSlide()" aria-label="Copy link to this slide" style="
+  position: fixed; top: 24px; right: 32px; z-index: 100;
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--card-bg);
+  cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px;
+  color: var(--fg-muted); transition: background 0.15s;
+">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+  <span id="share-label">Copy link</span>
+</button>
+
 <!-- Navigation -->
 <div class="nav">
   <button onclick="prev()" aria-label="Previous">&larr;</button>
@@ -764,10 +777,26 @@
     current = ((n % total) + total) % total;
     slides[current].classList.add('active');
     document.getElementById('current').textContent = current + 1;
+    history.replaceState(null, '', '#' + (current + 1));
   }
 
   function next() { show(current + 1); }
   function prev() { show(current - 1); }
+
+  function shareSlide() {
+    const url = location.origin + location.pathname + '#' + (current + 1);
+    navigator.clipboard.writeText(url).then(() => {
+      const label = document.getElementById('share-label');
+      label.textContent = 'Copied!';
+      setTimeout(() => { label.textContent = 'Copy link'; }, 1500);
+    });
+  }
+
+  // Load slide from hash on page load
+  const hashSlide = parseInt(location.hash.replace('#', ''), 10);
+  if (hashSlide >= 1 && hashSlide <= total) {
+    show(hashSlide - 1);
+  }
 
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
