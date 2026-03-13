@@ -427,6 +427,18 @@
     color: var(--fg);
   }
   .big-quote .accent { color: var(--accent); }
+
+  a.pr-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.15s;
+  }
+  a.pr-link:hover {
+    text-decoration-color: var(--accent);
+    color: var(--accent);
+  }
 </style>
 </head>
 <body>
@@ -555,27 +567,27 @@
         <h3>CSS & Layout Fixes</h3>
         <p>Padding, z-index, positioning, colors, dark mode. Agents are surgical with targeted style changes.</p>
         <ul class="example-list" style="margin-top: 12px;">
-          <li><span class="tag">1 commit</span> Fix FAB overlap with classifier</li>
-          <li><span class="tag">1 commit</span> Increase chat max-width to 760px</li>
-          <li><span class="tag">1 commit</span> Fix help tooltip cutoff</li>
+          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/96937" target="_blank">Fix FAB overlap with classifier</a></li>
+          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/96515" target="_blank">Increase chat max-width to 760px</a></li>
+          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/92744" target="_blank">Fix help tooltip cutoff</a></li>
         </ul>
       </div>
       <div class="insight-card green">
         <h3>Removals & Deletions</h3>
         <p>The simplest task for an agent. "Remove X" or "Hide Y" almost never need iteration.</p>
         <ul class="example-list" style="margin-top: 12px;">
-          <li><span class="tag">1 commit</span> Remove deep research tool</li>
-          <li><span class="tag">1 commit</span> Remove chat setup button</li>
-          <li><span class="tag">1 commit</span> Hide follow-up in view mode</li>
+          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/amplitude/pull/33443" target="_blank">Remove deep research tool</a></li>
+          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/94344" target="_blank">Remove chat setup button</a></li>
+          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/90191" target="_blank">Hide follow-up in view mode</a></li>
         </ul>
       </div>
       <div class="insight-card green">
         <h3>Config & Feature Flags</h3>
         <p>Mechanical changes with clear patterns. Agent adds the flag, wires it up, done.</p>
         <ul class="example-list" style="margin-top: 12px;">
-          <li><span class="tag">1 commit</span> Add extended context limit flag</li>
-          <li><span class="tag">2 commits</span> Instrument AI context events</li>
-          <li><span class="tag">1 commit</span> Replace dark mode hex values</li>
+          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/91462" target="_blank">Add extended context limit flag</a></li>
+          <li><span class="tag">2 commits</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/90231" target="_blank">Instrument AI context events</a></li>
+          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/94060" target="_blank">Replace dark mode hex values</a></li>
         </ul>
       </div>
     </div>
@@ -597,7 +609,7 @@
           <h3>1. Scope Creep</h3>
           <span class="pill" style="background: var(--amber-light); color: var(--amber); font-size: 11px;">HUMAN BEHAVIOR</span>
         </div>
-        <p>A PR starts as one thing, then more gets added. <span class="mono" style="font-size:14px;">#92154</span> started as "add a button" and ballooned to 49 commits across 4 authors.</p>
+        <p>A PR starts as one thing, then more gets added. <a class="pr-link mono" style="font-size:14px;" href="https://github.com/amplitude/javascript/pull/92154" target="_blank">#92154</a> started as "add a button" and ballooned to 49 commits across 4 authors.</p>
         <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border);">
           <p style="font-size: 14px; color: var(--amber); font-weight: 500;">Discipline: one prompt, one PR, one concern. Humans must resist "while you're at it."</p>
         </div>
@@ -607,7 +619,7 @@
           <h3>2. Visual Design Iteration</h3>
           <span class="pill" style="background: var(--blue-light); color: var(--blue); font-size: 11px;">SYSTEM CHANGE</span>
         </div>
-        <p>Agents can't judge aesthetics. "Make it slap" required 22 commits of repositioning and blur adjustments on <span class="mono" style="font-size:14px;">#94204</span>.</p>
+        <p>Agents can't judge aesthetics. "Make it slap" required 22 commits of repositioning and blur adjustments on <a class="pr-link mono" style="font-size:14px;" href="https://github.com/amplitude/javascript/pull/94204" target="_blank">#94204</a>.</p>
         <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border);">
           <p style="font-size: 14px; color: var(--blue); font-weight: 500;">Make the local loop faster so we can iterate for real. Improve baseline design system quality.</p>
         </div>
@@ -681,7 +693,7 @@
       <div class="col">
         <div style="padding: 24px 28px; background: var(--green-light); border-radius: 12px; border: 1px solid #C5E4D3;">
           <div class="pill" style="background: var(--green); color: white; margin-bottom: 16px;">CLEAN RUN</div>
-          <h3 style="font-size: 17px; margin-bottom: 16px;">Fix classifier button overlap</h3>
+          <h3 style="font-size: 17px; margin-bottom: 16px;"><a class="pr-link" href="https://github.com/amplitude/javascript/pull/96937" target="_blank">Fix classifier button overlap</a></h3>
           <table style="font-size: 15px; line-height: 2;">
             <tr><td style="color: var(--fg-muted); padding-right: 16px;">Commits</td><td class="mono"><strong>1</strong></td></tr>
             <tr><td style="color: var(--fg-muted); padding-right: 16px;">Origin</td><td>Cursor Agent</td></tr>
@@ -702,7 +714,7 @@
       <div class="col">
         <div style="padding: 24px 28px; background: var(--accent-light); border-radius: 12px; border: 1px solid #F5D0C3;">
           <div class="pill" style="background: var(--accent); color: white; margin-bottom: 16px;">HIGH THRASH</div>
-          <h3 style="font-size: 17px; margin-bottom: 16px;">Agents Dashboard Entrypoint</h3>
+          <h3 style="font-size: 17px; margin-bottom: 16px;"><a class="pr-link" href="https://github.com/amplitude/javascript/pull/92154" target="_blank">Agents Dashboard Entrypoint</a></h3>
           <table style="font-size: 15px; line-height: 2;">
             <tr><td style="color: var(--fg-muted); padding-right: 16px;">Commits</td><td class="mono"><strong>49</strong></td></tr>
             <tr><td style="color: var(--fg-muted); padding-right: 16px;">Origin</td><td>Slack &rarr; Claude</td></tr>
