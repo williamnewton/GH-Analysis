@@ -1,1 +1,4 @@
 .DS_Store
+visual-regression/screenshots/
+visual-regression/test-results/
+visual-regression/node_modules/
