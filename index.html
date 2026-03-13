@@ -558,37 +558,63 @@
     </div>
   </div>
 
-  <!-- SLIDE 4: What Agents Nail -->
-  <div class="slide" data-slide="4">
-    <h2>What Agents Nail</h2>
-    <p style="font-size: 18px; margin-bottom: 28px; max-width: 600px;">Clean runs share common traits. The task is <strong style="color:var(--fg);">unambiguous, single-concern, and requires no design judgment</strong>.</p>
-    <div class="three-col">
-      <div class="insight-card green">
-        <h3>CSS & Layout Fixes</h3>
-        <p>Padding, z-index, positioning, colors, dark mode. Agents are surgical with targeted style changes.</p>
-        <ul class="example-list" style="margin-top: 12px;">
-          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/96937" target="_blank">Fix FAB overlap with classifier</a></li>
-          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/96515" target="_blank">Increase chat max-width to 760px</a></li>
-          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/92744" target="_blank">Fix help tooltip cutoff</a></li>
-        </ul>
+  <!-- SLIDE 4: What Agents Nail + Oneshot Examples -->
+  <div class="slide" data-slide="4" style="padding: 48px 60px;">
+    <h2 style="margin-bottom: 20px;">Oneshot Examples — Where AI Coding Currently Works Well</h2>
+    <div style="display: flex; gap: 28px; flex: 1; overflow: hidden;">
+      <!-- Left: categories -->
+      <div style="display: flex; flex-direction: column; gap: 12px; width: 420px; flex-shrink: 0;">
+        <div class="insight-card green" style="padding: 16px 20px;">
+          <h3 style="font-size: 16px; margin-bottom: 6px;">CSS & Layout Fixes</h3>
+          <ul class="example-list" style="gap: 6px;">
+            <li><span class="tag">1</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/96937" target="_blank">Fix FAB overlap with classifier</a></li>
+            <li><span class="tag">1</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/96515" target="_blank">Increase chat max-width to 760px</a></li>
+            <li><span class="tag">1</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/92744" target="_blank">Fix help tooltip cutoff</a></li>
+          </ul>
+        </div>
+        <div class="insight-card green" style="padding: 16px 20px;">
+          <h3 style="font-size: 16px; margin-bottom: 6px;">Removals & Deletions</h3>
+          <ul class="example-list" style="gap: 6px;">
+            <li><span class="tag">1</span> <a class="pr-link" href="https://github.com/amplitude/amplitude/pull/33443" target="_blank">Remove deep research tool</a></li>
+            <li><span class="tag">1</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/94344" target="_blank">Remove chat setup button</a></li>
+            <li><span class="tag">1</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/90191" target="_blank">Hide follow-up in view mode</a></li>
+          </ul>
+        </div>
+        <div class="insight-card green" style="padding: 16px 20px;">
+          <h3 style="font-size: 16px; margin-bottom: 6px;">Config & Feature Flags</h3>
+          <ul class="example-list" style="gap: 6px;">
+            <li><span class="tag">1</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/91462" target="_blank">Add extended context limit flag</a></li>
+            <li><span class="tag">2</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/90231" target="_blank">Instrument AI context events</a></li>
+            <li><span class="tag">1</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/94060" target="_blank">Replace dark mode hex values</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="insight-card green">
-        <h3>Removals & Deletions</h3>
-        <p>The simplest task for an agent. "Remove X" or "Hide Y" almost never need iteration.</p>
-        <ul class="example-list" style="margin-top: 12px;">
-          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/amplitude/pull/33443" target="_blank">Remove deep research tool</a></li>
-          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/94344" target="_blank">Remove chat setup button</a></li>
-          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/90191" target="_blank">Hide follow-up in view mode</a></li>
-        </ul>
-      </div>
-      <div class="insight-card green">
-        <h3>Config & Feature Flags</h3>
-        <p>Mechanical changes with clear patterns. Agent adds the flag, wires it up, done.</p>
-        <ul class="example-list" style="margin-top: 12px;">
-          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/91462" target="_blank">Add extended context limit flag</a></li>
-          <li><span class="tag">2 commits</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/90231" target="_blank">Instrument AI context events</a></li>
-          <li><span class="tag">1 commit</span> <a class="pr-link" href="https://github.com/amplitude/javascript/pull/94060" target="_blank">Replace dark mode hex values</a></li>
-        </ul>
+      <!-- Right: Slack screenshots -->
+      <div style="display: flex; flex-direction: column; gap: 12px; flex: 1; overflow: hidden;">
+        <div style="display: flex; gap: 12px; align-items: center; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; flex: 1;">
+          <img src="examples/good/CleanShot 2026-03-13 at 12.35.02@2x.png" style="height: 100%; width: auto; max-width: 55%; object-fit: cover; object-position: left top; display: block; flex-shrink: 0;" />
+          <div style="padding: 12px 16px 12px 4px; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
+            <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start; font-size: 11px;">1 commit</div>
+            <p style="font-size: 14px; line-height: 1.4;"><strong style="color: var(--fg);">"Fix the overlapping tooltip here."</strong></p>
+            <p style="font-size: 12px; line-height: 1.35; color: var(--fg-muted);">Screenshot + one sentence = done.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; flex: 1;">
+          <img src="examples/good/CleanShot 2026-03-13 at 12.34.50@2x.png" style="height: 100%; width: auto; max-width: 55%; object-fit: cover; object-position: left top; display: block; flex-shrink: 0;" />
+          <div style="padding: 12px 16px 12px 4px; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
+            <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start; font-size: 11px;">1 commit</div>
+            <p style="font-size: 14px; line-height: 1.4;"><strong style="color: var(--fg);">"Add a filter dropdown for Owner."</strong></p>
+            <p style="font-size: 12px; line-height: 1.35; color: var(--fg-muted);">Specific view, specific component.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; flex: 1;">
+          <img src="examples/good/CleanShot 2026-03-13 at 12.34.01@2x.png" style="height: 100%; width: auto; max-width: 55%; object-fit: cover; object-position: left top; display: block; flex-shrink: 0;" />
+          <div style="padding: 12px 16px 12px 4px; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
+            <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start; font-size: 11px;">2 commits</div>
+            <p style="font-size: 14px; line-height: 1.4;"><strong style="color: var(--fg);">"Adjust column widths so all columns display."</strong></p>
+            <p style="font-size: 12px; line-height: 1.35; color: var(--fg-muted);">Detailed spec, still one concern.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -783,37 +809,6 @@
     </div>
   </div>
 
-  <!-- SLIDE 9: Good Examples from Slack -->
-  <div class="slide" data-slide="9">
-    <h2>Oneshot Examples — Where AI Coding Currently Works Well</h2>
-    <p style="font-size: 18px; margin-bottom: 20px; max-width: 700px;">One message, one screenshot for context, one clear instruction. The agent ships it in a single commit.</p>
-    <div style="display: flex; flex-direction: column; gap: 16px; flex: 1; overflow: hidden;">
-      <div style="display: flex; gap: 16px; align-items: flex-start; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;">
-        <img src="examples/good/CleanShot 2026-03-13 at 12.35.02@2x.png" style="width: 440px; height: auto; display: block; flex-shrink: 0;" />
-        <div style="padding: 20px 24px 20px 8px; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
-          <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start;">1 commit</div>
-          <p style="font-size: 15px; line-height: 1.5;"><strong style="color: var(--fg);">"Fix the overlapping tooltip here."</strong></p>
-          <p style="font-size: 13px; line-height: 1.45;">Screenshot of the exact problem. One sentence. Agent fixes it in a single commit.</p>
-        </div>
-      </div>
-      <div style="display: flex; gap: 16px; align-items: flex-start; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;">
-        <img src="examples/good/CleanShot 2026-03-13 at 12.34.50@2x.png" style="width: 440px; height: auto; display: block; flex-shrink: 0;" />
-        <div style="padding: 20px 24px 20px 8px; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
-          <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start;">1 commit</div>
-          <p style="font-size: 15px; line-height: 1.5;"><strong style="color: var(--fg);">"Add a filter dropdown for Owner."</strong></p>
-          <p style="font-size: 13px; line-height: 1.45;">Specific component, specific view, screenshot of current state. No ambiguity about what or where.</p>
-        </div>
-      </div>
-      <div style="display: flex; gap: 16px; align-items: flex-start; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;">
-        <img src="examples/good/CleanShot 2026-03-13 at 12.34.01@2x.png" style="width: 440px; height: auto; display: block; flex-shrink: 0;" />
-        <div style="padding: 20px 24px 20px 8px; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
-          <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start;">2 commits</div>
-          <p style="font-size: 15px; line-height: 1.5;"><strong style="color: var(--fg);">"Adjust column widths so all columns display on screen."</strong></p>
-          <p style="font-size: 13px; line-height: 1.45;">Detailed spec with min-widths and priority order. More complex but still scoped to one concern.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 
