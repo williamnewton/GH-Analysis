@@ -778,33 +778,30 @@
   <!-- SLIDE 9: Good Examples from Slack -->
   <div class="slide" data-slide="9">
     <h2>What Good Looks Like</h2>
-    <p style="font-size: 18px; margin-bottom: 24px; max-width: 700px;">One message, one screenshot for context, one clear instruction. The agent ships it in a single commit.</p>
-    <div class="three-col" style="flex: 1; gap: 20px;">
-      <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
-        <div style="flex: 1; overflow: hidden;">
-          <img src="examples/good/CleanShot 2026-03-13 at 12.35.02@2x.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" />
-        </div>
-        <div style="padding: 16px 20px; border-top: 1px solid var(--border);">
-          <div class="pill" style="background: var(--green-light); color: var(--green); margin-bottom: 8px;">1 commit</div>
-          <p style="font-size: 14px; line-height: 1.45;"><strong style="color: var(--fg);">"Fix the overlapping tooltip."</strong> Screenshot included, specific location, no ambiguity.</p>
-        </div>
-      </div>
-      <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
-        <div style="flex: 1; overflow: hidden;">
-          <img src="examples/good/CleanShot 2026-03-13 at 12.34.50@2x.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" />
-        </div>
-        <div style="padding: 16px 20px; border-top: 1px solid var(--border);">
-          <div class="pill" style="background: var(--green-light); color: var(--green); margin-bottom: 8px;">1 commit</div>
-          <p style="font-size: 14px; line-height: 1.45;"><strong style="color: var(--fg);">"Add a filter dropdown for Owner."</strong> Specific component, specific view, screenshot of current state.</p>
+    <p style="font-size: 18px; margin-bottom: 20px; max-width: 700px;">One message, one screenshot for context, one clear instruction. The agent ships it in a single commit.</p>
+    <div style="display: flex; flex-direction: column; gap: 16px; flex: 1; overflow: hidden;">
+      <div style="display: flex; gap: 16px; align-items: flex-start; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;">
+        <img src="examples/good/CleanShot 2026-03-13 at 12.35.02@2x.png" style="width: 440px; height: auto; display: block; flex-shrink: 0;" />
+        <div style="padding: 20px 24px 20px 8px; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+          <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start;">1 commit</div>
+          <p style="font-size: 15px; line-height: 1.5;"><strong style="color: var(--fg);">"Fix the overlapping tooltip here."</strong></p>
+          <p style="font-size: 13px; line-height: 1.45;">Screenshot of the exact problem. One sentence. Agent fixes it in a single commit.</p>
         </div>
       </div>
-      <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
-        <div style="flex: 1; overflow: hidden;">
-          <img src="examples/good/CleanShot 2026-03-13 at 12.34.01@2x.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" />
+      <div style="display: flex; gap: 16px; align-items: flex-start; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;">
+        <img src="examples/good/CleanShot 2026-03-13 at 12.34.50@2x.png" style="width: 440px; height: auto; display: block; flex-shrink: 0;" />
+        <div style="padding: 20px 24px 20px 8px; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+          <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start;">1 commit</div>
+          <p style="font-size: 15px; line-height: 1.5;"><strong style="color: var(--fg);">"Add a filter dropdown for Owner."</strong></p>
+          <p style="font-size: 13px; line-height: 1.45;">Specific component, specific view, screenshot of current state. No ambiguity about what or where.</p>
         </div>
-        <div style="padding: 16px 20px; border-top: 1px solid var(--border);">
-          <div class="pill" style="background: var(--green-light); color: var(--green); margin-bottom: 8px;">2 commits</div>
-          <p style="font-size: 14px; line-height: 1.45;"><strong style="color: var(--fg);">"Adjust column widths so all columns display on screen."</strong> Detailed spec with min-widths and priorities.</p>
+      </div>
+      <div style="display: flex; gap: 16px; align-items: flex-start; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;">
+        <img src="examples/good/CleanShot 2026-03-13 at 12.34.01@2x.png" style="width: 440px; height: auto; display: block; flex-shrink: 0;" />
+        <div style="padding: 20px 24px 20px 8px; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+          <div class="pill" style="background: var(--green-light); color: var(--green); align-self: flex-start;">2 commits</div>
+          <p style="font-size: 15px; line-height: 1.5;"><strong style="color: var(--fg);">"Adjust column widths so all columns display on screen."</strong></p>
+          <p style="font-size: 13px; line-height: 1.45;">Detailed spec with min-widths and priority order. More complex but still scoped to one concern.</p>
         </div>
       </div>
     </div>
