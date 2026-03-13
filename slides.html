@@ -731,7 +731,7 @@
   </div>
 
   <!-- SLIDE 7: Recommendations -->
-  <div class="slide" data-slide="7">
+  <div class="slide" data-slide="7" style="padding-bottom: 48px;">
     <h2>Building the Software Factory</h2>
     <p style="font-size: 18px; margin-bottom: 24px; max-width: 700px;">Only 1 of 4 thrash causes requires changing human behavior. The other 3 are <strong style="color: var(--fg);">system problems with system solutions</strong>.</p>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; flex: 1;">
@@ -771,6 +771,54 @@
     </div>
   </div>
 
+
+  <!-- SLIDE 8: PR Index -->
+  <div class="slide" data-slide="8" style="padding: 32px 48px;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; flex-shrink: 0;">
+      <h2 style="margin-bottom: 0; font-size: 28px;">All 87 PRs</h2>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <input id="pr-search" type="text" placeholder="Filter by title..." oninput="filterPRs()" style="
+          font-family: 'Inter', sans-serif; font-size: 14px; padding: 8px 14px;
+          border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg);
+          color: var(--fg); width: 240px; outline: none;
+        " />
+        <select id="pr-commits-filter" onchange="filterPRs()" style="
+          font-family: 'Inter', sans-serif; font-size: 13px; padding: 8px 12px;
+          border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg);
+          color: var(--fg); outline: none; cursor: pointer;
+        ">
+          <option value="all">All commits</option>
+          <option value="1">1 commit</option>
+          <option value="2-3">2-3 commits</option>
+          <option value="4-10">4-10 commits</option>
+          <option value="11+">11+ commits</option>
+        </select>
+        <select id="pr-repo-filter" onchange="filterPRs()" style="
+          font-family: 'Inter', sans-serif; font-size: 13px; padding: 8px 12px;
+          border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg);
+          color: var(--fg); outline: none; cursor: pointer;
+        ">
+          <option value="all">All repos</option>
+          <option value="javascript">javascript</option>
+          <option value="amplitude">amplitude</option>
+        </select>
+        <span id="pr-count" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--fg-muted); white-space: nowrap;">87 PRs</span>
+      </div>
+    </div>
+    <div style="flex: 1; overflow-y: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg);">
+      <table id="pr-table" style="width: 100%; border-collapse: collapse; font-size: 14px;">
+        <thead>
+          <tr style="position: sticky; top: 0; background: var(--code-bg); z-index: 1;">
+            <th onclick="sortPRs('commits')" style="cursor:pointer; padding: 10px 16px; text-align: right; width: 80px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-muted); font-weight: 600; border-bottom: 1px solid var(--border); user-select: none;">Commits</th>
+            <th onclick="sortPRs('title')" style="cursor:pointer; padding: 10px 16px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-muted); font-weight: 600; border-bottom: 1px solid var(--border); user-select: none;">PR</th>
+            <th onclick="sortPRs('date')" style="cursor:pointer; padding: 10px 16px; text-align: right; width: 100px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-muted); font-weight: 600; border-bottom: 1px solid var(--border); user-select: none;">Merged</th>
+            <th style="padding: 10px 16px; text-align: left; width: 80px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-muted); font-weight: 600; border-bottom: 1px solid var(--border);">Repo</th>
+          </tr>
+        </thead>
+        <tbody id="pr-tbody"></tbody>
+      </table>
+    </div>
+  </div>
 
 </div>
 
@@ -834,6 +882,159 @@
       document.documentElement.requestFullscreen?.();
     }
   });
+
+  // PR Index data and logic
+  const PR_DATA = [
+    {n:98048,r:"javascript",t:"Refactor opportunity detail view and status groups",s:"Restructure display groups with clearer status hierarchy, add sticky toolbar",c:7,d:"2026-03-12",u:"https://github.com/amplitude/javascript/pull/98048"},
+    {n:97982,r:"javascript",t:"Agents overview table display",s:"Keep Thread and Agent columns as flex columns",c:3,d:"2026-03-13",u:"https://github.com/amplitude/javascript/pull/97982"},
+    {n:97936,r:"javascript",t:"Clean up opportunities view",s:"Replace status icons, redesign opportunity cards",c:23,d:"2026-03-12",u:"https://github.com/amplitude/javascript/pull/97936"},
+    {n:97874,r:"javascript",t:"Agents overview owner filter",s:"Add Owner dropdown filter with person icon",c:4,d:"2026-03-12",u:"https://github.com/amplitude/javascript/pull/97874"},
+    {n:97525,r:"javascript",t:"Tooltip display order",s:"Fix tooltip display ordering",c:4,d:"2026-03-11",u:"https://github.com/amplitude/javascript/pull/97525"},
+    {n:97498,r:"javascript",t:"Agent settings icon",s:"Compact settings icon and AI Settings button",c:1,d:"2026-03-10",u:"https://github.com/amplitude/javascript/pull/97498"},
+    {n:97394,r:"javascript",t:"Inline validation and helper text for agent form fields",s:"Add validation and helper text to agent creation form",c:22,d:"2026-03-10",u:"https://github.com/amplitude/javascript/pull/97394"},
+    {n:97249,r:"javascript",t:"Fix export to notebook",s:"Add BlocksEvidenceArtifact export with buildBlocksEvidenceRows",c:7,d:"2026-03-09",u:"https://github.com/amplitude/javascript/pull/97249"},
+    {n:96450,r:"javascript",t:"Activity log color variables",s:"Replace hardcoded hex with semantic CSS variables",c:2,d:"2026-03-09",u:"https://github.com/amplitude/javascript/pull/96450"},
+    {n:97134,r:"javascript",t:"Refactor OpportunityDetailPage layout",s:"Remove tags section, reduce title size, new layout",c:18,d:"2026-03-07",u:"https://github.com/amplitude/javascript/pull/97134"},
+    {n:97129,r:"javascript",t:"Add Opportunities management page with feature flag",s:"New management page with PDLC feature flag, tabs, routing",c:25,d:"2026-03-07",u:"https://github.com/amplitude/javascript/pull/97129"},
+    {n:96977,r:"javascript",t:"AI content filter tooltip",s:"Pass tooltip text for generated filter in search",c:2,d:"2026-03-07",u:"https://github.com/amplitude/javascript/pull/96977"},
+    {n:34738,r:"amplitude",t:"Slack AI response bullets",s:"Fix bullet formatting in Slack AI responses",c:4,d:"2026-03-06",u:"https://github.com/amplitude/amplitude/pull/34738"},
+    {n:34727,r:"amplitude",t:"Add Opportunity Investigator subagent",s:"New subagent for evidence gathering",c:9,d:"2026-03-06",u:"https://github.com/amplitude/amplitude/pull/34727"},
+    {n:96944,r:"javascript",t:"Extract opportunity detail to dedicated page route",s:"New route with Overview, Sources, Actions, Activity tabs",c:13,d:"2026-03-06",u:"https://github.com/amplitude/javascript/pull/96944"},
+    {n:96937,r:"javascript",t:"Classifier button overlap fix",s:"Replace cerulean Inline with div using Tailwind",c:1,d:"2026-03-05",u:"https://github.com/amplitude/javascript/pull/96937"},
+    {n:96920,r:"javascript",t:"Enhance OpportunityCard with category and metrics",s:"Add category tags, metrics, assignees, color-coded badges",c:3,d:"2026-03-05",u:"https://github.com/amplitude/javascript/pull/96920"},
+    {n:96515,r:"javascript",t:"Chat core max width increase",s:"Increase chat max-width from 720px to 760px",c:1,d:"2026-03-03",u:"https://github.com/amplitude/javascript/pull/96515"},
+    {n:95931,r:"javascript",t:"Classifier FAB position fix",s:"Fix floating action button positioning",c:1,d:"2026-02-27",u:"https://github.com/amplitude/javascript/pull/95931"},
+    {n:95897,r:"javascript",t:"React artifact error boundary",s:"Create ArtifactErrorBoundary using Sentry ErrorBoundary",c:5,d:"2026-02-27",u:"https://github.com/amplitude/javascript/pull/95897"},
+    {n:95872,r:"javascript",t:"Agent notifications optional",s:"Remove pre-populated email from default notification settings",c:9,d:"2026-02-27",u:"https://github.com/amplitude/javascript/pull/95872"},
+    {n:95702,r:"javascript",t:"Custom instructions editor modal",s:"Create CustomInstructionsEditorModal with core-ui Dialog",c:1,d:"2026-02-25",u:"https://github.com/amplitude/javascript/pull/95702"},
+    {n:95596,r:"javascript",t:"Empty state popover size",s:"Fix empty state popover sizing",c:2,d:"2026-02-25",u:"https://github.com/amplitude/javascript/pull/95596"},
+    {n:95440,r:"javascript",t:"AI chat action UI",s:"Match tooltip structure for Copy, Thumbs up/down buttons",c:5,d:"2026-02-24",u:"https://github.com/amplitude/javascript/pull/95440"},
+    {n:95419,r:"javascript",t:"AI chat hr styling",s:"Style horizontal rules in AI chat",c:4,d:"2026-02-24",u:"https://github.com/amplitude/javascript/pull/95419"},
+    {n:95421,r:"javascript",t:"AI chat button on agent sessions",s:"Add chat button to agent session views",c:2,d:"2026-02-23",u:"https://github.com/amplitude/javascript/pull/95421"},
+    {n:95413,r:"javascript",t:"Navigation skeleton alignment",s:"Fix top nav skeleton right padding to match real toolbar",c:5,d:"2026-02-23",u:"https://github.com/amplitude/javascript/pull/95413"},
+    {n:95408,r:"javascript",t:"Dashboard artifact rendering",s:"Fix dashboard artifact rendering issues",c:4,d:"2026-02-23",u:"https://github.com/amplitude/javascript/pull/95408"},
+    {n:94731,r:"javascript",t:"Add default prompts to AI Controls settings",s:"Default prompts configuration in settings page",c:7,d:"2026-02-16",u:"https://github.com/amplitude/javascript/pull/94731"},
+    {n:94718,r:"javascript",t:"Generated by AI filter",s:"Add generated to supportedContentFlagFilters in search",c:2,d:"2026-02-15",u:"https://github.com/amplitude/javascript/pull/94718"},
+    {n:94400,r:"javascript",t:"AI chat debug panel dark mode",s:"Replace bg-white with dark mode semantic colors",c:14,d:"2026-02-15",u:"https://github.com/amplitude/javascript/pull/94400"},
+    {n:94674,r:"javascript",t:"Global agent availability polish",s:"Replace admin preview with Global Agent is on messaging",c:9,d:"2026-02-14",u:"https://github.com/amplitude/javascript/pull/94674"},
+    {n:94516,r:"javascript",t:"Fix butterbar outage banner positioning",s:"Fix broken outage banner layout",c:4,d:"2026-02-14",u:"https://github.com/amplitude/javascript/pull/94516"},
+    {n:94477,r:"javascript",t:"Session Replay mobile unavailability docs link",s:"Show mobile unavailability message with docs link",c:5,d:"2026-02-14",u:"https://github.com/amplitude/javascript/pull/94477"},
+    {n:94661,r:"javascript",t:"AI controls new badge",s:"Add textRightContent prop to SidebarItem for badge",c:2,d:"2026-02-13",u:"https://github.com/amplitude/javascript/pull/94661"},
+    {n:94623,r:"javascript",t:"Link parser undefined URLs fix",s:"Fix crash when parts[1] is undefined in link parser",c:1,d:"2026-02-13",u:"https://github.com/amplitude/javascript/pull/94623"},
+    {n:94510,r:"javascript",t:"Refactor Global Agent toggle to ToggleGroup",s:"Replace custom toggle with ToggleGroup component",c:17,d:"2026-02-13",u:"https://github.com/amplitude/javascript/pull/94510"},
+    {n:94204,r:"javascript",t:"SVG collage background",s:"Background visual design with blur and positioning",c:22,d:"2026-02-13",u:"https://github.com/amplitude/javascript/pull/94204"},
+    {n:94401,r:"javascript",t:"AI Controls, Context, Files UI polish",s:"Comprehensive UI polish pass on AI settings",c:36,d:"2026-02-12",u:"https://github.com/amplitude/javascript/pull/94401"},
+    {n:94385,r:"javascript",t:'Change "Ask AI" to "Global Agent" in i18n',s:"Rename all Ask AI strings to Global Agent",c:5,d:"2026-02-12",u:"https://github.com/amplitude/javascript/pull/94385"},
+    {n:94344,r:"javascript",t:"Chat setup button removal",s:"Remove chat setup button from UI",c:1,d:"2026-02-12",u:"https://github.com/amplitude/javascript/pull/94344"},
+    {n:94184,r:"javascript",t:"Ask banner color icon",s:"Update banner icon color",c:1,d:"2026-02-11",u:"https://github.com/amplitude/javascript/pull/94184"},
+    {n:94124,r:"javascript",t:"Prompt input placeholder update",s:'Change placeholder to "Analyze, learn, or build anything..."',c:2,d:"2026-02-11",u:"https://github.com/amplitude/javascript/pull/94124"},
+    {n:94097,r:"javascript",t:"Global Agent splash page redesign",s:"Update splash page look, copy, and feature card messaging",c:23,d:"2026-02-11",u:"https://github.com/amplitude/javascript/pull/94097"},
+    {n:94060,r:"javascript",t:"Homepage cards color values",s:"Replace hard-coded rgba with semantic bg vars",c:1,d:"2026-02-10",u:"https://github.com/amplitude/javascript/pull/94060"},
+    {n:93246,r:"javascript",t:"Session Replay Agents popover",s:"Add agents popover to SessionReplayView",c:19,d:"2026-02-10",u:"https://github.com/amplitude/javascript/pull/93246"},
+    {n:93927,r:"javascript",t:"Ask Amplitude banner message",s:"Update Ask Amplitude banner copy",c:2,d:"2026-02-09",u:"https://github.com/amplitude/javascript/pull/93927"},
+    {n:93683,r:"javascript",t:"Ask Amplitude warning",s:"Add warning Alert with orange variant",c:10,d:"2026-02-09",u:"https://github.com/amplitude/javascript/pull/93683"},
+    {n:93615,r:"javascript",t:'Delete repetitive "?" icon',s:"Remove duplicate help icon",c:5,d:"2026-02-05",u:"https://github.com/amplitude/javascript/pull/93615"},
+    {n:93562,r:"javascript",t:"Update global agent splash",s:"Splash page content and layout updates",c:9,d:"2026-02-05",u:"https://github.com/amplitude/javascript/pull/93562"},
+    {n:92783,r:"javascript",t:'Change "Ask AI" to "Chat"',s:"Rename Ask AI to Chat in navigation",c:3,d:"2026-02-02",u:"https://github.com/amplitude/javascript/pull/92783"},
+    {n:93111,r:"javascript",t:"Update ContentRenderer",s:"ContentRenderer.tsx update",c:1,d:"2026-01-31",u:"https://github.com/amplitude/javascript/pull/93111"},
+    {n:93078,r:"javascript",t:"Dark mode markdown artifacts",s:"Fix light/dark mode rendering for AI feedback artifacts",c:2,d:"2026-01-31",u:"https://github.com/amplitude/javascript/pull/93078"},
+    {n:93034,r:"javascript",t:"Splash page visual polish",s:"Styling and visual polish pass",c:2,d:"2026-01-30",u:"https://github.com/amplitude/javascript/pull/93034"},
+    {n:92945,r:"javascript",t:"Shared Agents UI post-launch fix",s:"Remove custom styles, fix spacing in GeneralAccess",c:21,d:"2026-01-30",u:"https://github.com/amplitude/javascript/pull/92945"},
+    {n:92848,r:"javascript",t:"Dashboard / Agents popover UI adjustments",s:"Swap button positions, sharing details UI",c:28,d:"2026-01-30",u:"https://github.com/amplitude/javascript/pull/92848"},
+    {n:92953,r:"javascript",t:"Agent popover menu unified",s:"Consistent menu ordering across views",c:3,d:"2026-01-29",u:"https://github.com/amplitude/javascript/pull/92953"},
+    {n:92951,r:"javascript",t:"Agent settings sidepanel position",s:"Fix sidepanel positioning",c:1,d:"2026-01-29",u:"https://github.com/amplitude/javascript/pull/92951"},
+    {n:92765,r:"javascript",t:"New chat placeholder text",s:"Update placeholder text in new chat",c:5,d:"2026-01-28",u:"https://github.com/amplitude/javascript/pull/92765"},
+    {n:92704,r:"javascript",t:"Reduce padding in project settings",s:"Reduce padding and increase border radius on section cards",c:1,d:"2026-01-28",u:"https://github.com/amplitude/javascript/pull/92704"},
+    {n:92154,r:"javascript",t:"Agents Dashboard Entrypoint — icon button with popover",s:"Add agents icon button with popover in dashboard header",c:49,d:"2026-01-28",u:"https://github.com/amplitude/javascript/pull/92154"},
+    {n:33630,r:"amplitude",t:"Session replay email styling",s:"Style session replay notification emails",c:8,d:"2026-01-28",u:"https://github.com/amplitude/amplitude/pull/33630"},
+    {n:92744,r:"javascript",t:"Help tooltip cutoff fix",s:"Position tooltip at bottom to prevent page cutoff",c:1,d:"2026-01-27",u:"https://github.com/amplitude/javascript/pull/92744"},
+    {n:92594,r:"javascript",t:"Migrate starter prompts to action-oriented",s:"Refactor prompts from Q&A to action-oriented with translations",c:20,d:"2026-01-27",u:"https://github.com/amplitude/javascript/pull/92594"},
+    {n:92384,r:"javascript",t:"Change Export Markdown to Copy Markdown",s:"Replace export with clipboard copy and tooltip",c:13,d:"2026-01-24",u:"https://github.com/amplitude/javascript/pull/92384"},
+    {n:92198,r:"javascript",t:"Share modal spacing, padding, and tabs",s:"Fix share modal layout, add tabs, pending changes pattern",c:20,d:"2026-01-21",u:"https://github.com/amplitude/javascript/pull/92198"},
+    {n:91462,r:"javascript",t:"Add extended context limit feature flag",s:"Add ai-control-extended-context-limit flag",c:1,d:"2026-01-10",u:"https://github.com/amplitude/javascript/pull/91462"},
+    {n:91129,r:"javascript",t:"Fix AmpPixelWave clipping",s:"Use integer grid and padding to fix position rounding",c:2,d:"2026-01-08",u:"https://github.com/amplitude/javascript/pull/91129"},
+    {n:91215,r:"javascript",t:"New Chat button in collapsed sidebar",s:"Add New Chat button to collapsed sidebar state",c:2,d:"2026-01-07",u:"https://github.com/amplitude/javascript/pull/91215"},
+    {n:91202,r:"javascript",t:"Chart header alignment fix",s:"Fix chart header alignment",c:2,d:"2026-01-07",u:"https://github.com/amplitude/javascript/pull/91202"},
+    {n:33443,r:"amplitude",t:"Remove deep research tool",s:"Remove deep research tool from agents",c:1,d:"2026-01-07",u:"https://github.com/amplitude/amplitude/pull/33443"},
+    {n:91077,r:"javascript",t:"Improve empty state for threads table",s:"Better empty state design for agents threads",c:8,d:"2026-01-06",u:"https://github.com/amplitude/javascript/pull/91077"},
+    {n:91059,r:"javascript",t:"AI chat panel padding",s:"Fix padding in AI chat panel",c:4,d:"2026-01-06",u:"https://github.com/amplitude/javascript/pull/91059"},
+    {n:90499,r:"javascript",t:"X-axis label overlap fix",s:"Increase tickPixelInterval to prevent label overlap",c:2,d:"2025-12-19",u:"https://github.com/amplitude/javascript/pull/90499"},
+    {n:90395,r:"javascript",t:"Fix chart controls collapsing on every edit",s:"Prevent panel from collapsing on each edit",c:3,d:"2025-12-19",u:"https://github.com/amplitude/javascript/pull/90395"},
+    {n:90399,r:"javascript",t:"App ID tooltip on chat routes",s:"Add tooltip to display-only app ID",c:2,d:"2025-12-18",u:"https://github.com/amplitude/javascript/pull/90399"},
+    {n:90383,r:"javascript",t:"Reduce chat fade height and overlay arrow",s:"Add scrollShadowSize prop to ConversationContent",c:5,d:"2025-12-18",u:"https://github.com/amplitude/javascript/pull/90383"},
+    {n:90332,r:"javascript",t:"Simplify agent activity accordion logic",s:"Expand when working, collapse when done",c:2,d:"2025-12-18",u:"https://github.com/amplitude/javascript/pull/90332"},
+    {n:90285,r:"javascript",t:"Home category default prompts",s:"Add default prompts to home category",c:9,d:"2025-12-18",u:"https://github.com/amplitude/javascript/pull/90285"},
+    {n:90210,r:"javascript",t:"Enhance Agents Overview page layout",s:"Change metadata to inline layout under the goal",c:15,d:"2025-12-18",u:"https://github.com/amplitude/javascript/pull/90210"},
+    {n:90231,r:"javascript",t:"Instrument AI Context Settings events",s:"Track when user saves context in AI settings",c:2,d:"2025-12-17",u:"https://github.com/amplitude/javascript/pull/90231"},
+    {n:90193,r:"javascript",t:"Add ForkConversation for view-only threads",s:"Fork conversation component for read-only thread views",c:17,d:"2025-12-17",u:"https://github.com/amplitude/javascript/pull/90193"},
+    {n:90195,r:"javascript",t:"Auto-collapse Chart Controls on AI Chat",s:"Collapse chart controls when in AI chat context",c:3,d:"2025-12-16",u:"https://github.com/amplitude/javascript/pull/90195"},
+    {n:90191,r:"javascript",t:"Hide follow-up questions in view-only mode",s:"Hide follow-up when thread is view-only",c:1,d:"2025-12-16",u:"https://github.com/amplitude/javascript/pull/90191"},
+    {n:90188,r:"javascript",t:"Fix double scrollbar on Windows",s:"Fix double scrollbar on /agents/overview on Windows",c:1,d:"2025-12-16",u:"https://github.com/amplitude/javascript/pull/90188"},
+    {n:90117,r:"javascript",t:"Add collapsible history list",s:"Collapsible history list component",c:5,d:"2025-12-16",u:"https://github.com/amplitude/javascript/pull/90117"},
+    {n:90077,r:"javascript",t:"Threads sidepanel popover z-index",s:"Fix z-index on threads sidepanel popover",c:1,d:"2025-12-15",u:"https://github.com/amplitude/javascript/pull/90077"},
+  ];
+
+  let sortCol = 'date';
+  let sortAsc = false;
+
+  function commitColor(c) {
+    if (c === 1) return 'var(--green)';
+    if (c <= 3) return '#5BAD8A';
+    if (c <= 10) return 'var(--amber)';
+    return 'var(--accent)';
+  }
+
+  function renderPRs(data) {
+    const tbody = document.getElementById('pr-tbody');
+    tbody.innerHTML = data.map(pr => `
+      <tr style="border-bottom: 1px solid var(--border);">
+        <td style="padding: 8px 16px; text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: ${commitColor(pr.c)};">${pr.c}</td>
+        <td style="padding: 8px 16px;">
+          <a href="${pr.u}" target="_blank" class="pr-link" style="font-weight: 500; color: var(--fg); font-size: 14px;">${pr.t}</a>
+          <div style="font-size: 12px; color: var(--fg-muted); margin-top: 2px; line-height: 1.3;">${pr.s}</div>
+        </td>
+        <td style="padding: 8px 16px; text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--fg-muted); white-space: nowrap;">${pr.d.slice(5)}</td>
+        <td style="padding: 8px 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--fg-muted);">${pr.r}</td>
+      </tr>
+    `).join('');
+    document.getElementById('pr-count').textContent = data.length + ' PR' + (data.length !== 1 ? 's' : '');
+  }
+
+  function getFiltered() {
+    const q = document.getElementById('pr-search').value.toLowerCase();
+    const cf = document.getElementById('pr-commits-filter').value;
+    const rf = document.getElementById('pr-repo-filter').value;
+    return PR_DATA.filter(pr => {
+      if (q && !pr.t.toLowerCase().includes(q) && !pr.s.toLowerCase().includes(q)) return false;
+      if (rf !== 'all' && pr.r !== rf) return false;
+      if (cf === '1' && pr.c !== 1) return false;
+      if (cf === '2-3' && (pr.c < 2 || pr.c > 3)) return false;
+      if (cf === '4-10' && (pr.c < 4 || pr.c > 10)) return false;
+      if (cf === '11+' && pr.c < 11) return false;
+      return true;
+    });
+  }
+
+  function sortPRs(col) {
+    if (sortCol === col) sortAsc = !sortAsc;
+    else { sortCol = col; sortAsc = col === 'title'; }
+    filterPRs();
+  }
+
+  function filterPRs() {
+    let data = getFiltered();
+    data.sort((a, b) => {
+      let v;
+      if (sortCol === 'commits') v = a.c - b.c;
+      else if (sortCol === 'title') v = a.t.localeCompare(b.t);
+      else v = a.d.localeCompare(b.d);
+      return sortAsc ? v : -v;
+    });
+    renderPRs(data);
+  }
+
+  // Initial render
+  filterPRs();
 </script>
 </body>
 </html>
