@@ -851,8 +851,54 @@
     </div>
   </div>
 
-  <!-- SLIDE 9: PR Index -->
-  <div class="slide" data-slide="9" style="padding: 32px 48px;">
+  <!-- SLIDE 9: Key Takeaways -->
+  <div class="slide" data-slide="9" style="padding: 64px 80px;">
+    <h2 style="margin-bottom: 12px;">What Actually Hurts</h2>
+    <p style="font-size: 17px; color: var(--fg-muted); margin-bottom: 40px; max-width: 650px;">After annotating all 87 PRs, five pain themes emerge — ranked by how often they caused frustration.</p>
+    <div style="display: flex; flex-direction: column; gap: 20px; flex: 1;">
+      <div style="display: flex; gap: 24px; align-items: flex-start;">
+        <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 10px; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px;">1</div>
+        <div style="flex: 1;">
+          <h3 style="font-size: 19px; margin-bottom: 4px;">Slow visual iteration loop</h3>
+          <p style="font-size: 15px; line-height: 1.55; color: var(--fg-muted);">~15 PRs. "Designing in code" with slow cloud agent turn times. The Figma-to-code gap. Agents can't see what they built, so polish takes 20+ commits instead of 3. <strong style="color: var(--fg);">This is the #1 pain by a wide margin.</strong></p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 24px; align-items: flex-start;">
+        <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 10px; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px;">2</div>
+        <div style="flex: 1;">
+          <h3 style="font-size: 19px; margin-bottom: 4px;">Agent mangles things on first pass</h3>
+          <p style="font-size: 15px; line-height: 1.55; color: var(--fg-muted);">~8 PRs. The agent gets close but product quality isn't there. Fixing it takes more turns than starting over. "Did a bunch of weird stuff," "mangled everything," "never really worked right."</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 24px; align-items: flex-start;">
+        <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 10px; background: var(--amber); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px;">3</div>
+        <div style="flex: 1;">
+          <h3 style="font-size: 19px; margin-bottom: 4px;">Simple things that aren't simple</h3>
+          <p style="font-size: 15px; line-height: 1.55; color: var(--fg-muted);">~3 PRs. Add a warning alert, dark mode a panel, change a button — should be 1-2 commits, ballooned to 10-14. The mismatch between perceived and actual agent effort is demoralizing.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 24px; align-items: flex-start;">
+        <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 10px; background: var(--amber); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px;">4</div>
+        <div style="flex: 1;">
+          <h3 style="font-size: 19px; margin-bottom: 4px;">Multi-author context loss</h3>
+          <p style="font-size: 15px; line-height: 1.55; color: var(--fg-muted);">When multiple agents or agents + humans touch the same PR, context evaporates. The 49-commit dashboard entrypoint and 28-commit popover are poster children.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 24px; align-items: flex-start;">
+        <div style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 10px; background: #999; color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px;">5</div>
+        <div style="flex: 1;">
+          <h3 style="font-size: 19px; margin-bottom: 4px;">Vague prompts compound everything</h3>
+          <p style="font-size: 15px; line-height: 1.55; color: var(--fg-muted);">When the prompt is vague, agents go sideways and fix-on-fix spirals start. But the real insight: <strong style="color: var(--fg);">the system should be more forgiving of imprecise prompts, not less.</strong></p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 24px; padding: 16px 20px; background: var(--accent-light); border-radius: 10px; border: 1px solid #F5D0C3;">
+      <p style="font-size: 16px; line-height: 1.5; color: var(--fg);"><strong>The throughline:</strong> almost every frustrating PR involved UI iteration where the agent couldn't validate what it produced. Every great oneshot was scoped, mechanical, and non-visual. The system fix is the same: <strong style="color: var(--accent);">agents need to see what they built.</strong></p>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: PR Index -->
+  <div class="slide" data-slide="10" style="padding: 32px 48px;">
     <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; flex-shrink: 0;">
       <h2 style="margin-bottom: 0; font-size: 28px;">All 87 PRs</h2>
       <div style="display: flex; gap: 12px; align-items: center;">
