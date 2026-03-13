@@ -775,16 +775,38 @@
     </div>
   </div>
 
-  <!-- SLIDE 9: Closing -->
-  <div class="slide" data-slide="9" style="justify-content: center; gap: 32px;">
-    <div class="big-quote">
-      Agents are already writing <span class="accent">most of our code</span>. The leverage isn't in making them smarter — it's in giving them <span class="accent">better-scoped tasks</span> and <span class="accent">less noisy pipelines</span>.
-    </div>
-    <div style="margin-top: 32px;">
-      <p style="font-size: 18px; color: var(--fg-muted); line-height: 1.7; max-width: 600px;">The difference between a 1-commit PR and a 49-commit PR is almost never the agent. It's the prompt, the scope, and the system around it.</p>
-    </div>
-    <div class="meta" style="margin-top: 40px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--fg-muted);">
-      Full analysis &rarr; agent-efficiency-analysis.md
+  <!-- SLIDE 9: Good Examples from Slack -->
+  <div class="slide" data-slide="9">
+    <h2>What Good Looks Like</h2>
+    <p style="font-size: 18px; margin-bottom: 24px; max-width: 700px;">One message, one screenshot for context, one clear instruction. The agent ships it in a single commit.</p>
+    <div class="three-col" style="flex: 1; gap: 20px;">
+      <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="flex: 1; overflow: hidden;">
+          <img src="examples/good/CleanShot 2026-03-13 at 12.35.02@2x.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" />
+        </div>
+        <div style="padding: 16px 20px; border-top: 1px solid var(--border);">
+          <div class="pill" style="background: var(--green-light); color: var(--green); margin-bottom: 8px;">1 commit</div>
+          <p style="font-size: 14px; line-height: 1.45;"><strong style="color: var(--fg);">"Fix the overlapping tooltip."</strong> Screenshot included, specific location, no ambiguity.</p>
+        </div>
+      </div>
+      <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="flex: 1; overflow: hidden;">
+          <img src="examples/good/CleanShot 2026-03-13 at 12.34.50@2x.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" />
+        </div>
+        <div style="padding: 16px 20px; border-top: 1px solid var(--border);">
+          <div class="pill" style="background: var(--green-light); color: var(--green); margin-bottom: 8px;">1 commit</div>
+          <p style="font-size: 14px; line-height: 1.45;"><strong style="color: var(--fg);">"Add a filter dropdown for Owner."</strong> Specific component, specific view, screenshot of current state.</p>
+        </div>
+      </div>
+      <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="flex: 1; overflow: hidden;">
+          <img src="examples/good/CleanShot 2026-03-13 at 12.34.01@2x.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top;" />
+        </div>
+        <div style="padding: 16px 20px; border-top: 1px solid var(--border);">
+          <div class="pill" style="background: var(--green-light); color: var(--green); margin-bottom: 8px;">2 commits</div>
+          <p style="font-size: 14px; line-height: 1.45;"><strong style="color: var(--fg);">"Adjust column widths so all columns display on screen."</strong> Detailed spec with min-widths and priorities.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -806,7 +828,7 @@
 <!-- Navigation -->
 <div class="nav">
   <button onclick="prev()" aria-label="Previous">&larr;</button>
-  <span class="counter"><span id="current">1</span> / <span id="total">10</span></span>
+  <span class="counter"><span id="current">1</span> / <span id="total"></span></span>
   <button onclick="next()" aria-label="Next">&rarr;</button>
 </div>
 <div class="slide-number" id="slide-number"></div>
