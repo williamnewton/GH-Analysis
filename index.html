@@ -609,9 +609,11 @@
           <h3>1. Scope Creep</h3>
           <span class="pill" style="background: var(--amber-light); color: var(--amber); font-size: 11px;">HUMAN BEHAVIOR</span>
         </div>
-        <p>A PR starts as one thing, then more gets added. <a class="pr-link mono" style="font-size:14px;" href="https://github.com/amplitude/javascript/pull/92154" target="_blank">#92154</a> started as "add a button" and ballooned to 49 commits across 4 authors.</p>
-        <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border);">
-          <p style="font-size: 14px; color: var(--amber); font-weight: 500;">Discipline: one prompt, one PR, one concern. Humans must resist "while you're at it."</p>
+        <p>A PR starts as one thing, then more gets added. <a class="pr-link mono" style="font-size:14px;" href="https://github.com/amplitude/javascript/pull/92154" target="_blank">#92154</a> started as "add a button" &rarr; 49 commits across 4 authors.</p>
+        <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 3px;">
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/94401" target="_blank">#94401</a> AI Controls polish — 36 commits, 5 authors</p>
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/92848" target="_blank">#92848</a> Dashboard popover adjustments — 28 commits, 5 authors</p>
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/94097" target="_blank">#94097</a> Splash page look &amp; messaging — 23 commits, 5 authors</p>
         </div>
       </div>
       <div class="insight-card" style="border-left: 4px solid var(--blue); display: flex; flex-direction: column;">
@@ -620,8 +622,10 @@
           <span class="pill" style="background: var(--blue-light); color: var(--blue); font-size: 11px;">SYSTEM CHANGE</span>
         </div>
         <p>Agents can't judge aesthetics. "Make it slap" required 22 commits of repositioning and blur adjustments on <a class="pr-link mono" style="font-size:14px;" href="https://github.com/amplitude/javascript/pull/94204" target="_blank">#94204</a>.</p>
-        <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border);">
-          <p style="font-size: 14px; color: var(--blue); font-weight: 500;">Make the local loop faster so we can iterate for real. Improve baseline design system quality.</p>
+        <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 3px;">
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/97936" target="_blank">#97936</a> Opportunities view cleanup — 23 commits of redesign</p>
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/92945" target="_blank">#92945</a> Shared agents UI post-launch — 21 commits, button tweaks</p>
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/94400" target="_blank">#94400</a> Debug panel dark mode — 14 commits, 7 fixes</p>
         </div>
       </div>
       <div class="insight-card" style="border-left: 4px solid var(--blue); display: flex; flex-direction: column;">
@@ -629,9 +633,11 @@
           <h3>3. Multi-Component Features</h3>
           <span class="pill" style="background: var(--blue-light); color: var(--blue); font-size: 11px;">SYSTEM CHANGE</span>
         </div>
-        <p>When a PR touches routing + UI + state + i18n, agents need many rounds. These tasks should be decomposed into sequential, smaller prompts.</p>
-        <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border);">
-          <p style="font-size: 14px; color: var(--blue); font-weight: 500;">Agent should decompose tasks automatically. Need better support for multi-repo changes (frontend, backend).</p>
+        <p>When a PR touches routing + UI + state + i18n, agents need many rounds to get it right.</p>
+        <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 3px;">
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/97129" target="_blank">#97129</a> Opportunities manage page — 25 commits, routing + tabs + flags</p>
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/93246" target="_blank">#93246</a> Session Replay agents popover — 19 commits, modal + prompts + z-index</p>
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/96944" target="_blank">#96944</a> Opportunity detail page — 13 commits, extract route + layout</p>
         </div>
       </div>
       <div class="insight-card" style="border-left: 4px solid var(--blue); display: flex; flex-direction: column;">
@@ -639,9 +645,11 @@
           <h3>4. Fix-on-Fix Spirals</h3>
           <span class="pill" style="background: var(--blue-light); color: var(--blue); font-size: 11px;">SYSTEM CHANGE</span>
         </div>
-        <p>In high-thrash PRs, <strong style="color:var(--fg);">~40% of substantive commits are fixes</strong> — the agent fixing what it just wrote, creating correction cascades.</p>
-        <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border);">
-          <p style="font-size: 14px; color: var(--blue); font-weight: 500;">Go deep: classify error categories, fix them one by one. Build the fixes into agent defaults.</p>
+        <p>In high-thrash PRs, <strong style="color:var(--fg);">~40% of substantive commits are fixes</strong> — correction cascades where each fix risks new issues.</p>
+        <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 3px;">
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/92198" target="_blank">#92198</a> Share modal — 16 of 15 substantive commits were fixes</p>
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/92848" target="_blank">#92848</a> Agents popover — 13 fix commits out of 20 substantive</p>
+          <p style="font-size: 12px; line-height: 1.4;"><a class="pr-link mono" style="font-size:12px;" href="https://github.com/amplitude/javascript/pull/93683" target="_blank">#93683</a> Ask Amplitude warning — 4 fixes out of 6 substantive</p>
         </div>
       </div>
     </div>
